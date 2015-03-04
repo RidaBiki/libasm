@@ -14,9 +14,9 @@ start:
 
 _main:
 	push rbp
-	mov rsp, rbp
+	mov rbp, rsp
 	sub rsp, 16
-	lea rdi, hello.string
-	call printf
+	lea rdi, [rel hello.string]
+	call _printf
 	leave
 	ret
