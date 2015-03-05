@@ -6,7 +6,7 @@
 #    By: rbikitar <rbikitar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 18:40:55 by rbikitar          #+#    #+#              #
-#    Updated: 2015/03/04 18:45:04 by rbikitar         ###   ########.fr        #
+#    Updated: 2015/03/05 17:19:42 by rbikitar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,7 +15,7 @@ NAME        = libfts.a
 
 NASM          = ~/.brew/bin/nasm
 
-SRC_S       = ft_isdigit.s
+SRC_S       = ft_isdigit.s ft_isalpha.s ft_isalnum.s
 
 SRC_O       = $(SRC_S:.s=.o)
 
@@ -26,15 +26,17 @@ NAME_LIB    = libfts.a
 all:        $(NAME)
 
 $(NAME):
-            @$(NASM) $(FLAG_S) -I. -o $(SRC_)
-            @ar rc $(NAME_LIB) $(SRC_O)
-            @ranlib $(NAME_LIB)
+			@$(NASM) $(FLAG_S) ft_isdigit.s
+			@$(NASM) $(FLAG_S) ft_isalpha.s
+			@$(NASM) $(FLAG_S) ft_isalnum.s
+			@ar rc $(NAME_LIB) $(SRC_O)
+			@ranlib $(NAME_LIB)
 
 clean:
-            @rm -Rf $(SRC_O)
+			@rm -Rf $(SRC_O)
 
 fclean:     clean
-            @rm -Rf $(NAME_LIB)
+			@rm -Rf $(NAME_LIB)
 
 re:         fclean all
 

@@ -15,7 +15,8 @@ start:
 _main:
 		cmp rdi, 64
 		ja _sup64
-		jmp _ret0
+		jbe _ret0
+		ret
 
 _inf91:
 		mov rax, 0
@@ -24,17 +25,20 @@ _inf91:
 _sup64:
 		cmp rdi, 90
 		jbe _ret1
-		jmp _inf122
+		ja _inf122
+		ret
 
 _inf122:
 		cmp rdi, 122
 		jbe _sup96
-		jmp _ret0
+		ja _ret0
+		ret
 
 _sup96:
 		cmp rdi, 96
 		ja _ret1
-		jmp _ret0
+		jbe _ret0
+		ret
 
 _ret1:
 		mov rax, 1
