@@ -6,7 +6,7 @@
 #    By: rbikitar <rbikitar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 18:40:55 by rbikitar          #+#    #+#              #
-#    Updated: 2015/03/05 17:19:42 by rbikitar         ###   ########.fr        #
+#    Updated: 2015/03/06 16:02:04 by rbikitar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,6 +29,9 @@ $(NAME):
 			@$(NASM) $(FLAG_S) ft_isdigit.s
 			@$(NASM) $(FLAG_S) ft_isalpha.s
 			@$(NASM) $(FLAG_S) ft_isalnum.s
+			@$(NASM) $(FLAG_S) ft_isprint.s
+			@$(NASM) $(FLAG_S) ft_isascii.s
+			@$(NASM) $(FLAG_S) ft_toupper.s
 			@ar rc $(NAME_LIB) $(SRC_O)
 			@ranlib $(NAME_LIB)
 

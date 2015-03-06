@@ -14,10 +14,8 @@ _main2:
 	cmp rdi, 58
 	jae _main
 	jb _inf58
-	ret
 
 _inf58:
 	cmp rdi, 48
 	jae _ret1
 	jb _ret0
-	ret
