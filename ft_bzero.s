@@ -1,8 +1,7 @@
 section .text
 	global start
 	global _main
-	global _retrdi
-	global _retmod
+	global _ret0
 	global _bz
 	
 start:
@@ -10,23 +9,17 @@ start:
 	ret
 
 _main:
-	mov rbx, rdi
+	mov rcx, 0
 	jmp _bz
-	cmp rdi, 97
-	jb _retrdi
-	cmp rdi, 122
-	ja _retrdi
-	jmp _retmod
 
 _bz:
-	cmp 
-	
-_retrdi:
-	mov rax, rdi
-	ret
+	cmp rcx, rsi
+	ja _ret0
+	mov [rdi], byte 0
+	inc rdi
+	inc rcx
+	jmp _bz
 
-_retmod:
-	mov rbx, rdi
-	sub rbx, 32
-	mov rdi, rbx
+_ret0:
+	mov rax, rdi
 	ret
