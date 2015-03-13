@@ -1,14 +1,9 @@
 section .text
-	global start
-	global _main
+	global _ft_tolower
 	global _retrdi
 	global _retmod
 
-start:
-	call _main
-	ret
-
-_main:
+_ft_tolower:
 	cmp rdi, 65
 	jb _retrdi
 	cmp rdi, 90
@@ -22,5 +17,5 @@ _retrdi:
 _retmod:
 	mov rbx, rdi
 	add rbx, 32
-	mov rdi, rbx
+	mov rax, rbx
 	ret

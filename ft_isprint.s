@@ -1,25 +1,20 @@
-section .text
-    global start
-    global _main
-    global _ret0
-    global _ret1
 
-start:
-    call _main
+
+section .text
+    global _ft_isprint
+
+_ft_isprint:
+    cmp rdi, 32
+    jb ret0
+    cmp rdi, 126
+    ja ret0
+    jmp ret1
     ret
 
-_main:
-    cmp rdi, 32
-    jb _ret0
-    cmp rdi, 126
-    ja _ret0
-    jmp _ret1
+ret1:
+		mov rax, 1
+		ret
 
-_ret0:
-	
-	mov rax, 0
-	ret
-
-_ret1:
-	mov rax, 1
-	ret
+ret0:
+		mov rax, 0
+		ret

@@ -6,26 +6,26 @@
 #    By: rbikitar <rbikitar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 18:40:55 by rbikitar          #+#    #+#              #
-#    Updated: 2015/03/12 17:03:52 by rbikitar         ###   ########.fr        #
+#    Updated: 2015/03/13 18:13:23 by rbikitar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 
-NAME        = libfts.a
+NAME		=	libfts.a
 
-NASM          = ~/.brew/bin/nasm
+NASM		=	~/.brew/bin/nasm
 
-SRC_S       = 	ft_isdigit.s ft_isalpha.s ft_isalnum.s ft_isprint.s \
+SRC_S		= 	ft_isdigit.s ft_isalpha.s ft_isalnum.s ft_isprint.s \
 				ft_isascii.s ft_toupper.s ft_tolower.s ft_bzero.s \
-				ft_puts.s
+				ft_strlen.s
 
-SRC_O       = $(SRC_S:.s=.o)
+SRC_O		=	$(SRC_S:.s=.o)
 
-FLAG_S      = -f macho64
+FLAG_S		=	-f macho64
 
-NAME_LIB    = libfts.a
+NAME_LIB	=	libfts.a
 
-all:        $(NAME)
+all:		$(NAME)
 
 $(NAME):
 			@$(NASM) $(FLAG_S) ft_isdigit.s
@@ -36,10 +36,9 @@ $(NAME):
 			@$(NASM) $(FLAG_S) ft_toupper.s
 			@$(NASM) $(FLAG_S) ft_tolower.s
 			@$(NASM) $(FLAG_S) ft_bzero.s
-			@$(NASM) $(FLAG_S) ft_puts.s
+			@$(NASM) $(FLAG_S) ft_strlen.s
 			@ar rc $(NAME_LIB) $(SRC_O)
 			@ranlib $(NAME_LIB)
-
 clean:
 			@rm -Rf $(SRC_O)
 
@@ -48,4 +47,8 @@ fclean:     clean
 
 re:         fclean all
 
-.PHONY:     all clean fclean re
+test:
+			@gcc -Wall -Wextra -Werror -c main.c
+			@gcc -o toto main.o libfts.a
+
+.PHONY:     all clean fclean re test

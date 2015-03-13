@@ -2,20 +2,26 @@
 
 section .text
 	global start2
-	global _main2
-	global _sup48
-	global _inf58
+	global _ft_isalnum
 
 start2:
-	call _main
+	call _ft_isalnum
 	ret
 
-_main2:
+_ft_isalnum:
 	cmp rdi, 58
-	jae _main
-	jb _inf58
+	jae _ft_isalpha
+	jb sup48
 
-_inf58:
+sup48:
 	cmp rdi, 48
-	jae _ret1
-	jb _ret0
+	jae ret1b
+	jb ret0b
+
+ret1b:
+	mov rax, 1
+	ret
+
+ret0b:
+	mov rax, 0
+	ret

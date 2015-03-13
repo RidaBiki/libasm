@@ -1,26 +1,21 @@
 section .text
-	global start
-	global _main
-	global _retrdi
-	global _retmod
+	global _ft_toupper
+	global _retrdi1
+	global _retmod1
 
-start:
-	call _main
-	ret
-
-_main:
+_ft_toupper:
 	cmp rdi, 97
-	jb _retrdi
+	jb _retrdi1
 	cmp rdi, 122
-	ja _retrdi
-	jmp _retmod
+	ja _retrdi1
+	jmp _retmod1
 
-_retrdi:
+_retrdi1:
 	mov rax, rdi
 	ret
 
-_retmod:
+_retmod1:
 	mov rbx, rdi
 	sub rbx, 32
-	mov rdi, rbx
+	mov rax, rbx
 	ret

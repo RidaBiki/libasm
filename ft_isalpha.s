@@ -1,42 +1,37 @@
 section .text
 		global start
-		global _main
-		global _inf122
-		global _sup64
-		global _sup96
-		global _ret1
-		global _ret0
+		global _ft_isalpha
 
 start:
-	    call _main
+	    call _ft_isalpha
 	    ret
 
-_main:
+_ft_isalpha:
 		cmp rdi, 64
-		ja _sup64
-		jbe _ret0
+		ja sup64
+		jbe ret0
 		ret
 
-_sup64:
+sup64:
 		cmp rdi, 90
-		jbe _ret1
-		ja _inf122
+		jbe ret1
+		ja inf122
 
-_inf122:
+inf122:
 		cmp rdi, 122
-		jbe _sup96
-		ja _ret0
+		jbe sup96
+		ja ret0
 
-_sup96:
+sup96:
 		cmp rdi, 96
-		ja _ret1
-		jbe _ret0
+		ja ret1
+		jbe ret0
 
-_ret1:
+ret1:
 		mov rax, 1
 		ret
 
-_ret0:
+ret0:
 		mov rax, 0
 		ret
 	
