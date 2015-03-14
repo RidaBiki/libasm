@@ -6,7 +6,7 @@
 /*   By: tpageard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 13:58:54 by tpageard          #+#    #+#             */
-/*   Updated: 2015/03/13 18:13:35 by rbikitar         ###   ########.fr       */
+/*   Updated: 2015/03/14 16:53:05 by rbikitar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strlen(char *s);
+int		ft_puts(char *s);
+void	*ft_memset(void *s, int c, size_t n);
 
 int main(void) {
 
@@ -36,10 +38,17 @@ int main(void) {
 
 	char test[] = "tommy";
 
-	printf("bzero 3 string: 'tommy' = %s\n", test);
+	printf("ft_bzero 3 string test: 'tommy' = %s\n", test);
 	ft_bzero(test, 3);
-	printf("bzero 3 string 'tommy' = %s\n", test);
-	printf("bzero 3 string 'tommy' + 3 = %s\n", test+ 3);
+	printf("ft_bzero 3 string 'tommy' = %s\n", test);
+	printf("ft_bzero 3 string 'tommy' + 3 = %s\n", test+ 3);
+
+	char test2[] = "tommy";
+
+	printf("bzero 3 string test: 'tommy' = %s\n", test2);
+	bzero(test2, 3);
+	printf("bzero 3 string 'tommy' = %s\n", test2);
+	printf("bzero 3 string 'tommy' + 3 = %s\n", test2+ 3);
 
 	/*
 	** TEST FOR ft_isalpha
@@ -305,5 +314,42 @@ int main(void) {
   	printf("strlen[tatata]: %d\n", ft_strlen("tatata"));
   	printf("strlen[oui]: %d\n", ft_strlen("oui"));
 
+
+    /*
+	** TEST FOR ft_puts
+    */
+
+	printf("\e[32m\nFT_puts TEST\e[0m\n");
+
+	ft_puts("test");
+	puts("test");
+	ft_puts("test\n");
+	puts("test\n");
+	ft_puts("te\0st");
+	puts("te\0st");
+	printf("%d = valeur de retour ftputs\n", ft_puts("rsfdg3245@#$5"));
+	printf("%d = valeur de retour puts\n", puts("rsfdg3245@#$5"));
+
+	/*
+	** TEST FOR ft_memset
+	*/
+	printf("\e[32m\nFT_memset TEST\e[0m\n");
+	
+	char mset[6] = "tommy";
+	mset[5] = '\0';
+	
+	printf("%s\n", mset);
+	ft_memset(mset, 'Q', 3);
+	printf("%s\n", (char *)ft_memset(mset, 'Q', 3));
+	printf("%s\n", mset);
+
+	char mset2[6] = "tommy";
+	mset2[5] = '\0';
+	
+	printf("%s\n", mset2);
+	memset(mset2, 'Q', 3);
+	printf("%s\n", (char *)memset(mset2, 'Q', 3));
+	printf("%s\n", mset2);
+	
 	return (0);
 }
