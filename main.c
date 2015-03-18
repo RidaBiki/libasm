@@ -6,7 +6,7 @@
 /*   By: tpageard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 13:58:54 by tpageard          #+#    #+#             */
-/*   Updated: 2015/03/14 16:53:05 by rbikitar         ###   ########.fr       */
+/*   Updated: 2015/03/18 12:09:04 by rbikitar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		ft_tolower(int c);
 int		ft_strlen(char *s);
 int		ft_puts(char *s);
 void	*ft_memset(void *s, int c, size_t n);
+void	*ft_memcpy(void *s, void *s2, size_t n);
+
 
 int main(void) {
 
@@ -351,5 +353,36 @@ int main(void) {
 	printf("%s\n", (char *)memset(mset2, 'Q', 3));
 	printf("%s\n", mset2);
 	
+
+	/*
+	** TEST FOR ft_memcpy
+    */
+
+	printf("\e[32m\nFT_memcpy TEST\e[0m\n");
+
+	char mcpy[6] = "tommy";
+	char mcpy2[6] = "ymmot";
+	mcpy[5] = '\0';
+	mcpy2[5] = '\0';
+
+	printf("%s\n", mcpy);
+	printf("%p\n", mcpy);
+	printf("%s\n", mcpy2);
+	printf("%p\n", mcpy2);
+	printf("%p\n", (char*)ft_memcpy(mcpy, mcpy2 , 5));
+	printf("%s\n", mcpy);
+
+	char mcpy3[6] = "tommy";
+	char mcpy4[6] = "ymmot";
+	mcpy3[5] = '\0';
+	mcpy4[5] = '\0';
+
+	printf("%s\n", mcpy3);
+	printf("%p\n", mcpy3);
+	printf("%s\n", mcpy4);
+	printf("%p\n", mcpy4);
+	printf("%p\n", (char*)memcpy(mcpy3, mcpy4 , 5));
+	printf("%s\n", mcpy3);
+
 	return (0);
 }

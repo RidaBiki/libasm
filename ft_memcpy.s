@@ -1,14 +1,14 @@
 section .text
-	global _ft_memset
-	
-_ft_memset:
+	global _ft_memcpy
+
+_ft_memcpy:
 	mov rcx, rdx
 	mov rax, rsi
 	mov rdx, rdi
 	cld
-	rep stosb
-	jmp rets
-	
-rets:
+	rep movsb
+	jmp return
+
+return:
 	mov rax, rdx
 	ret
