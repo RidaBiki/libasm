@@ -6,7 +6,7 @@
 /*   By: tpageard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 13:58:54 by tpageard          #+#    #+#             */
-/*   Updated: 2015/03/18 12:09:04 by rbikitar         ###   ########.fr       */
+/*   Updated: 2015/03/18 17:05:19 by rbikitar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int		ft_strlen(char *s);
 int		ft_puts(char *s);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *s, void *s2, size_t n);
-
+void	*malloc(size_t size);
+char	*ft_strdup(char *s);
 
 int main(void) {
 
@@ -383,6 +384,25 @@ int main(void) {
 	printf("%p\n", mcpy4);
 	printf("%p\n", (char*)memcpy(mcpy3, mcpy4 , 5));
 	printf("%s\n", mcpy3);
+
+
+/*
+** TEST FOR ft_strdup
+*/
+
+	printf("\e[32m\nFT_strdup TEST\e[0m\n");
+
+	char *tmp2 = strdup(mcpy);
+
+	printf("%p\n", mcpy);
+	printf("%p\n", tmp2);
+	ft_puts(tmp2);
+
+	char *tmp = ft_strdup(mcpy);
+
+	printf("%p\n", mcpy);
+	printf("%p\n", tmp);
+	ft_puts(tmp);
 
 	return (0);
 }
