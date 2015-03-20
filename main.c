@@ -6,7 +6,7 @@
 /*   By: tpageard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 13:58:54 by tpageard          #+#    #+#             */
-/*   Updated: 2015/03/18 17:05:19 by rbikitar         ###   ########.fr       */
+/*   Updated: 2015/03/20 17:24:21 by rbikitar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *s, void *s2, size_t n);
 void	*malloc(size_t size);
 char	*ft_strdup(char *s);
+void	ft_cat(int fd);
 
 int main(void) {
 
@@ -403,6 +404,20 @@ int main(void) {
 	printf("%p\n", mcpy);
 	printf("%p\n", tmp);
 	ft_puts(tmp);
+
+/*
+** TEST FOR ft_cat
+*/
+
+	printf("\e[32m\nFT_cat TEST\e[0m\n");
+
+	int fd = open("Makefile", O_RDONLY);
+	int fd1 = open("main.c", O_RDONLY);
+
+	ft_cat(0);
+	ft_cat(fd);
+	ft_cat(fd1);
+	ft_cat(-42);
 
 	return (0);
 }

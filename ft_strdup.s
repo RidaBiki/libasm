@@ -14,12 +14,11 @@ ft_strdup2:
 	pop rdi
 	mov r9, rdi
 	mov rdi, rax
-	mov rsi, r9
 	jmp ft_memcpy2
 
 ft_memcpy2:
+	mov rax, r9
 	mov rcx, r10
-	mov rax, rsi
 	mov rdx, rdi
 	cld
 	rep movsb

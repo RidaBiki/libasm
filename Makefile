@@ -6,7 +6,7 @@
 #    By: rbikitar <rbikitar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 18:40:55 by rbikitar          #+#    #+#              #
-#    Updated: 2015/03/18 16:09:58 by rbikitar         ###   ########.fr        #
+#    Updated: 2015/03/20 15:42:01 by rbikitar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,8 @@ NASM		=	~/.brew/bin/nasm
 
 SRC_S		= 	ft_isdigit.s ft_isalpha.s ft_isalnum.s ft_isprint.s \
 				ft_isascii.s ft_toupper.s ft_tolower.s ft_bzero.s \
-				ft_strlen.s ft_puts.s ft_memset.s ft_memcpy.s ft_strdup.s
+				ft_strlen.s ft_puts.s ft_memset.s ft_memcpy.s ft_strdup.s \
+				ft_cat.s
 
 SRC_O		=	$(SRC_S:.s=.o)
 
@@ -41,6 +42,7 @@ $(NAME):
 			@$(NASM) $(FLAG_S) ft_memset.s
 			@$(NASM) $(FLAG_S) ft_memcpy.s
 			@$(NASM) $(FLAG_S) ft_strdup.s
+			@$(NASM) $(FLAG_S) ft_cat.s
 			@ar rc $(NAME_LIB) $(SRC_O)
 			@ranlib $(NAME_LIB)
 clean:
