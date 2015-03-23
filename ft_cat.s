@@ -1,7 +1,10 @@
 section .bss
-	buf resb 1024
+	buf resb 10
 	bufsize equ $-buf
 
+section .data
+	retline db 10
+	
 section .text
 	global _ft_cat
 
@@ -9,12 +12,34 @@ _ft_cat:
 	cmp rdi, 0
 	jb ret_err
 	push rdi
-	mov rax, 3
+	jmp loop_read
+
+loop_read:
+	pop rdi
+	mov rax, 0x2000003
 	lea rsi, [rel buf]
 	mov rdx, bufsize
 	syscall
-	pop rdi
+	cmp rax, 10
+	jb ret_err
+	push rdi
+	jmp loop_write
+
+loop_write:	
+	mov rdi, 1
+	lea rsi, [rel buf]
+	mov rdx, bufsize
+	mov rax, 0x2000004
+	syscall
+ 	jmp loop_read
+	
+ret_err:
 	ret
 
-ret_err:
+ret_err2:
+	mov rdi, 1
+	lea rsi, [rel buf]
+	mov rdx, rax
+	mov rax, 0x2000004
+	syscall
 	ret

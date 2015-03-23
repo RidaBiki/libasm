@@ -1,6 +1,3 @@
-%define MACHSYSCALL(nb)	0x200000 | nb
-%define STDOUT				1
-%define WRITE				4
 %include "ft_strlen.s"
 
 section .data
