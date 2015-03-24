@@ -1,34 +1,30 @@
 section .text
 	global _ft_strdup
 	extern _malloc
+	extern _ft_strlen
 	
 _ft_strdup:
 	push rdi
-	mov rcx, 0
-	mov r10, 0
-	jmp loop2
-
-ft_strdup2:
-	mov rdi, rcx
+	call _ft_strlen
+	push rax
+	inc rax
+	mov	rdi, rax
+	push rdi
 	call _malloc
 	pop rdi
-	mov r9, rdi
-	mov rdi, rax
+	cmp rax, 0
+	je failret
 	jmp ft_memcpy2
 
 ft_memcpy2:
-	mov rax, r9
-	mov rcx, r10
-	mov rdx, rdi
+	pop rcx						;len
+	pop rsi						;str
+	mov	rdi, rax
+	push rdi
 	cld
 	rep movsb
-	mov rax, rdx
+	pop rax
 	ret
 
-loop2:
-	cmp byte [rdi], 0
-	je ft_strdup2
-	inc rcx
-	inc r10
-	inc rdi
-	jmp loop2
+failret:
+	ret

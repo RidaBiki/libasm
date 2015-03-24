@@ -20,8 +20,9 @@ loop_read:
 	lea rsi, [rel buf]
 	mov rdx, bufsize
 	syscall
+	jc ret_err
 	cmp rax, 10
-	jb ret_err
+	jb ret_err2
 	push rdi
 	jmp loop_write
 

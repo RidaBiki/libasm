@@ -6,7 +6,7 @@
 /*   By: tpageard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 13:58:54 by tpageard          #+#    #+#             */
-/*   Updated: 2015/03/23 17:56:06 by rbikitar         ###   ########.fr       */
+/*   Updated: 2015/03/24 18:42:47 by rbikitar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,56 @@ void	*ft_memcpy(void *s, void *s2, size_t n);
 void	*malloc(size_t size);
 char	*ft_strdup(char *s);
 void	ft_cat(int fd);
+char	*ft_strcat(char *s, char *s2);
 
 int main(void) {
 
+/*
+** TEST FOR ft_strcat
+*/
+
+    printf("\e[32m\nFT_strcat TEST\n\e[0m");
+
+//      char buf[9];
+
+    char        abc[10] = "";
+    char        abc2[10] = "abcd";
+
+    ft_bzero(abc, 10);
+    abc2[4] = '\0';
+
+    char        *t;
+//    char        *u;
+
+    t = ft_strcat(abc, abc2);
+//    u = strcat(abc, abc2);
+
+
+    printf("%s string t\n", t);
+//    printf("%s string u\n", t);
+
+/*	char buf[9];
+
+    bzero(buf, 9);
+    ft_strcat(buf, "");
+    ft_strcat(buf, "Bon");
+    ft_strcat(buf, "j");
+    ft_strcat(buf, "our.");
+    ft_strcat(buf, "");
+	puts(buf);
+	puts("Bonjour. ft");
+
+	char buf2[9];
+
+    bzero(buf2, 9);
+    strcat(buf2, "");
+    strcat(buf2, "Bon");
+    strcat(buf2, "j");
+    strcat(buf2, "our.");
+    strcat(buf2, "");
+	puts(buf2);
+	puts("Bonjour.");
+*/
 	/*
 	** TEST FOR ft_bzero
 	*/
@@ -400,10 +447,17 @@ int main(void) {
 	ft_puts(tmp2);
 
 	char *tmp = ft_strdup(mcpy);
+	char *tmp3 = ft_strdup("aaaaa");
+	char *tmp4 = strdup("aaaaa");
 
 	printf("%p\n", mcpy);
-	printf("%p\n", tmp);
+	printf("%p adresse tmp\n", tmp);
+	printf("%p  adresse tmp3\n", tmp);
 	ft_puts(tmp);
+	ft_puts("aaaaa test");
+	puts(tmp3);
+	ft_puts("aaaaa original");
+	puts(tmp4);
 
 /*
 ** TEST FOR ft_cat
