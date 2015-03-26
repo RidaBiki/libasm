@@ -15,5 +15,5 @@ bz:
 
 
 ret0:
-		mov rax, rdi
-		ret
+	mov rax, rdi
+	ret

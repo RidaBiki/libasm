@@ -1,9 +1,9 @@
 section .bss
-	buf resb 10
+	buf resb 1
 	bufsize equ $-buf
 
 section .data
-	retline db 10
+	retline db 1
 	
 section .text
 	global _ft_cat
@@ -21,7 +21,7 @@ loop_read:
 	mov rdx, bufsize
 	syscall
 	jc ret_err
-	cmp rax, 10
+	cmp rax, 1
 	jb ret_err2
 	push rdi
 	jmp loop_write

@@ -3,27 +3,20 @@ section .text
 	extern _ft_strlen
 	
 _ft_strcat:
-	cmp byte [rdi], 0
-	je strcat2
-	inc rdi
-	jmp _ft_strcat
-
-strcat2:
 	push rdi
-	mov rdi, rsi
 	call _ft_strlen
-	pop rdi
+	add rdi, rax
+	pop	rax
 	jmp loopcat
 
-loopcat:	
-	cmp rax, 0
+loopcat:
+	cmp [rsi], byte 0
 	je end
-	mov r9, [rsi]
-	mov [rdi], r9
+	mov bl, [rsi]
+	mov [rdi], bl
 	inc rdi
 	inc rsi
-	sub rax, 1
 	jmp loopcat
+
 end:
-	mov rax, rdi
 	ret
